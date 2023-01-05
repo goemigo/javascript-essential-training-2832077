@@ -16,12 +16,14 @@ const everydayPack = new Backpack(
   "December 5, 2018 15:00:00 PST"
 );
 
+//${} to inject javascript into html, to print out mixed text and variable values
+//`` to hold template literal
 const content = `
   <main>
     <article>
       <h1>${everydayPack.name}</h1>
       <ul>
-        <li>Volume: ${everydayPack.volume}</li>
+        <li>Volume: ${everydayPack.volume}</li> 
         <li>Color: ${everydayPack.color}</li>
         <li>Age: ${everydayPack.backpackAge()}</li>
         <li>Number of pockets: ${everydayPack.pocketNum}</li>

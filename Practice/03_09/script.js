@@ -23,4 +23,17 @@ const backpack = {
     this.strapLength.left = lengthLeft;
     this.strapLength.right = lengthRight;
   },
+  newColor: function (color){
+    this.color = color;
+  },
+  newPocketNum: function(num){
+    this.pocketNum = num;
+  },
 };
+
+console.log("color before:", backpack.color)
+backpack.newColor("light blue")
+console.log("color after:",backpack.color)
+console.log("pocket num before:", backpack.pocketNum)
+backpack.newPocketNum(20)
+console.log("pocket num after:", backpack.pocketNum)

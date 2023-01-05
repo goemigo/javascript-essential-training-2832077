@@ -20,3 +20,6 @@ const backpack = {
     this.strapLength.right = lengthRight;
   },
 };
+
+console.log("the backpack object:", backpack);
+console.log("the left strapLength:",backpack.strapLength.left)
