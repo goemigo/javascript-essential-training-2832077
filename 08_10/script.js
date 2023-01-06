@@ -13,7 +13,7 @@ const formatter = (locale = "en-US", currency = "USD", value) => {
   return formattedValue;
 };
 
-// Callback receives finalTip object, creates and outputs table on the DOM.
+// this is the Callback, receives finalTip object, creates and outputs table on the DOM.
 const printHTML = (finalTip) => {
   const tipTable = document.createElement("table");
   tipTable.innerHTML = `
@@ -38,7 +38,7 @@ const printHTML = (finalTip) => {
 };
 
 // Create a finalTip object with all the data. Send it to the printHTML callback.
-const tipCalculator = (sum, percentage, locale, currency) => {
+const tipCalculator = (sum, percentage, locale, currency, callback) => { //add the callback param, refers to the function to be called
   let tip = sum * (percentage / 100);
   let total = sum + tip;
 
@@ -48,6 +48,11 @@ const tipCalculator = (sum, percentage, locale, currency) => {
     tip: formatter(locale, currency, tip),
     total: formatter(locale, currency, total),
   };
+
+  callback(finalTip)
 };
 
-tipCalculator(29.95, 18, "de-DE", "EUR");
+tipCalculator(29.95, 18, "de-DE", "EUR",printHTML); 
+//call the printHTML without () means pass the entire function as a param to another function
+//instead of with (), which would execute the function immediately when the fucntion is encountered
+//the problem with executing directly is that when it's encountered, the finalTip object hasn't been calculated yet

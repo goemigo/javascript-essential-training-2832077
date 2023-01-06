@@ -21,7 +21,8 @@ const lidToggle = function (event, button, newArg) {
     : backpackObject.lidOpen = true;
 
   // Toggle button text
-  button.innerText == "Open lid" 
+  // because we used an arrow for the callback in the event listener, we can not use this keyword, thus here we use the button arg
+  button.innerText == "Open lid"  
     ? button.innerText = "Close lid" 
     : button.innerText = "Open lid";
 
@@ -71,7 +72,8 @@ const backpackList = backpackObjectArray.map((backpack) => {
   let newArg = "The argument I want to pass to the callback function!"
 
   // Add event listener
-  button.addEventListener("click", (event) => {
+  button.addEventListener("click", (event) => { //event is automatically passed for a listener, so we only need to give it a name in the () when we need to use it for something
+    //instead of use lidToggle directly as a callback, put it in a {} so we can pass args to lidToggle, because callback does not have () to pass args
     lidToggle(event, button, newArg)
   })
 

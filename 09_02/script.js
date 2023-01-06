@@ -18,6 +18,7 @@ button.addEventListener("click", () => {
 const mousePosition = (event) => {
   posX.innerText = event.pageX;
   posY.innerText = event.pageY;
+  console.log(event)//helps to see what the event is in the console
 };
 
 window.addEventListener("mousemove", mousePosition, false);

@@ -46,11 +46,7 @@ let stuffList = document.createElement("ul");
  * for loop
  * @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for
  */
-for (let i = 0; i < stuff.length; i++) {
-  let listItem = document.createElement("li");
-  listItem.innerHTML = stuff[i];
-  stuffList.append(listItem);
-}
+ 
 
 /**
  * for...of loop and arrays

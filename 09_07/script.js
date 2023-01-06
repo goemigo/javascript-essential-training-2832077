@@ -34,9 +34,11 @@ const lidToggle = function (event, button, newArg) {
     : (status.innerText = "closed");
 };
 
-/**
- * Strap length functionality
- */
+/*  this is what each listElement looks like
+<li class="feature backpack__strap" data-side="left">
+    Left strap length: <span>26 inches</span>
+</li> 
+*/
 const newStrapLength = (strapArray) => {
   // Loop through each element on the list
   strapArray.forEach((listElement) => {
@@ -46,12 +48,30 @@ const newStrapLength = (strapArray) => {
     // Create a new form element
     const lengthForm = document.createElement("form");
     lengthForm.classList.add(`${side}length`);
-
-    // Populate form with an input and a button
     lengthForm.innerHTML = `
       <input type="number" name="${side}Length" placeholder="New ${side} length">
       <button>Update</button>
     `;
+
+    /* this is what the form looks like
+    <form class="leftlength">
+      <input type="number" name="leftLength" placeholder="New left length">
+      <button>Update</button>
+    </form>
+    */
+
+    //add event listener to update strap length, listen to the form element!
+    lengthForm.addEventListener("submit",(e)=> { //这里如果用”click“ 点击input box也会导致原数字消失，而submit是只有点击update button时才更新数字
+      //stop the event from reloading the page 
+      e.preventDefault()
+
+      //get the value from input and set it as the new value
+      let newValue = lengthForm.querySelector("input").value
+      listElement.querySelector("span").innerHTML = `${newValue} inches`
+
+      //clear the input box
+      lengthForm.querySelector("input").value = ""
+    })
 
     // Add form to the end of the list element
     listElement.append(lengthForm);
@@ -91,14 +111,16 @@ const backpackList = backpackObjectArray.map((backpack) => {
     </ul>
     <button class="lid-toggle">Open lid</button>
   `;
-
+  
+  /*find the nodelist array to be passed to newStrapLength function.
+  this array contains two list elements, eacn one belongs to a backpack  */
   let strapLengths = backpackArticle.querySelectorAll(".backpack__strap");
   newStrapLength(strapLengths);
 
   let button = backpackArticle.querySelector(".lid-toggle");
   let newArg = "The argument I want to pass to the callback function!";
 
-  // Add event listener
+  // Add event listener to toggle lid status
   button.addEventListener("click", (event) => {
     lidToggle(event, button, newArg);
   });

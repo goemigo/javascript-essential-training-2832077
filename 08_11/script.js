@@ -41,7 +41,7 @@ const content = `
       everydayPack.strapLength.right
     } inches</span></li>
     <li class="feature backpack__lid">Lid status:<span> ${
-      everydayPack.lidOpen
+      everydayPack.lidOpen //can be changed directly into last shortcut line 
     }</span></li>
   </ul>
 `;
@@ -54,3 +54,11 @@ newArticle.setAttribute("id", "everyday");
 newArticle.innerHTML = content;
 
 main.append(newArticle);
+
+if (everydayPack.lidOpen === true){
+  console.log("lid is open")
+} else{
+  console.log("lid is closed")
+}
+
+console.log(everydayPack.lidOpen? "open!":"closed!") //this is shortcut for above

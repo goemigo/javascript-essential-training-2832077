@@ -24,6 +24,7 @@ const frogpack = {
   },
   lidOpen: false,
   image: "../../assets/images/frog.svg",
+  description: "A backpack that looks lile a frog.",
   toggleLid: function (lidStatus) {
     this.lidOpen = lidStatus;
   },
@@ -57,3 +58,26 @@ const content = `
       }</span></li>
     </ul>  
 `;
+
+
+function helperImage(dataObj){
+let newFigure = document.createElement("figure")
+let newImg = document.createElement("img")
+newImg.setAttribute("src",dataObj.image)
+// newImg.setAttribute("alt","")//? no difference
+let newCaption = document.createElement("figcaption")
+newCaption.innerText = dataObj.description //description as an element, with text
+newFigure.append(newImg,newCaption)
+return newFigure
+}
+
+function main(dataObj){
+  let newArticle = document.createElement("article")
+  newArticle.innerHTML = content
+  newArticle.prepend(helperImage(dataObj)) //link two functions
+  //prepend will append this node in the front, before any other node, so the image and caption will be on the top
+  return newArticle
+}
+
+//call functions
+document.querySelector("main").append(main(frogpack))

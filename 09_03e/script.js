@@ -38,9 +38,10 @@ const backpackList = backpackObjectArray.map((backpack) => {
     </ul>
     <button class="lid-toggle">Open lid</button>
   `;
-
-  const button = backpackArticle.querySelector(".lid-toggle")
-  const status = backpackArticle.querySelector(".backpack__lid span")
+  
+  //add event listener inside the map loop so that each backpack is listened
+  const button = backpackArticle.querySelector(".lid-toggle") //find the button to be listened
+  const status = backpackArticle.querySelector(".backpack__lid span") //find the text to be changed
 
   button.addEventListener("click", (event) => {
     console.log(event)

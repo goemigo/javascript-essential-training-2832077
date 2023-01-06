@@ -10,7 +10,7 @@ const greenPack = {
   pocketNum: 3,
 };
 
-const addPack = (currentPack) => {
+const addPack = (currentPack) => { //也可以只有一个括号没有param
   const newArticle = document.createElement("article");
   newArticle.innerHTML = `
     <h1>${currentPack.name}</h1>
